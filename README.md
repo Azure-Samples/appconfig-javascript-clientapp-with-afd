@@ -5,8 +5,8 @@ This sample is a full-stack chatbot application that uses Azure AI Foundry to ge
 ### Prerequisite
 
 - Azure AI Foundry with LLM model deployments
-* Azure Front Door endpoint configured with Azure App Configuration as its origin.
-* Application Insights resource
+- Azure Front Door endpoint configured with Azure App Configuration as its origin
+- Application Insights resource
 - Azure App Configuration with a variant feature flag named "OpenAI/newmodel" with the below configuration:
 
 ```json

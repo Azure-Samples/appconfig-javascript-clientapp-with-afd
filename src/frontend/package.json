@@ -5,8 +5,8 @@
     "build": "tsc -b && vite build --emptyOutDir"
   },
   "dependencies": {
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
     "react-router-dom": "^7.0.2",
     "@azure/app-configuration-provider": "2.3.0-preview",
     "@microsoft/feature-management": "latest",

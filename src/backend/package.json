@@ -10,7 +10,7 @@
     "@azure/ai-projects": "1.0.0",
     "@azure/identity": "^4.13.0",
     "dotenv": "^17.2.1",
-    "express": "^4.21.2"
+    "express": "^4.22.1"
   },
   "devDependencies": {
     "@types/express": "^4.17.25",

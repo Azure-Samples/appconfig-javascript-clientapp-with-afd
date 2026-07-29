@@ -7,7 +7,7 @@
   "dependencies": {
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
-    "react-router-dom": "^7.0.2",
+    "react-router-dom": "^7.12.0",
     "@azure/app-configuration-provider": "2.3.0-preview",
     "@microsoft/feature-management": "latest",
     "@microsoft/feature-management-applicationinsights-browser": "latest"

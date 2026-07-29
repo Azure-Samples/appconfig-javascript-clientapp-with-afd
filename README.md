@@ -82,7 +82,7 @@ The chat backend is mocked on purpose. To connect a real Azure AI Foundry deploy
 
 1. Install the SDKs: `cd src/backend && npm install @azure/identity @azure/ai-projects`
 2. Replace the mock in `src/backend/chatService.ts` with the Azure AI Foundry call shown in the comments there.
-3. Add the connection settings to `src/backend/.env`:
+3. Set the connection settings as environment variables before starting the server:
 
     ```
     AI_FOUNDRY_ENDPOINT=<YOUR-AI_FOUNDRY_ENDPOINT>

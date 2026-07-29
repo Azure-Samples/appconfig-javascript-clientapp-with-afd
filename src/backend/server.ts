@@ -1,9 +1,6 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT license.
 
-import * as dotenv from "dotenv";
-dotenv.config();
-
 import express from "express";
 import type { ChatMessage, ChatRequest, ChatResponse } from "./types.js";
 import { ChatService } from "./chatService.js";

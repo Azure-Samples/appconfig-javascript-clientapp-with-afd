@@ -1,10 +1,11 @@
 # Azure App Configuration Azure Front Door JavaScript Example
 
-This sample is a full-stack chatbot application that uses Azure AI Foundry to generate natural language responses, Azure App Configuration to manage feature flags, and Azure Front Door to securely expose the feature flag to client-side users. The Node.js/TypeScript backend connects to an Azure AI Foundry deployment to handle chat requests and orchestrate calls to different LLM models. The React + Vite frontend is the main focus: it is served through Azure Front Door, loads a variant feature flag from Azure App Configuration at runtime, and uses the JavaScript feature management library together with Application Insights to run an A/B test across multiple LLM model configurations.
+This sample is a full-stack chatbot application that uses Azure App Configuration to manage feature flags and Azure Front Door to securely expose the feature flag to client-side users. The React + Vite frontend is the main focus: it is served through Azure Front Door, loads a variant feature flag from Azure App Configuration at runtime, and uses the JavaScript feature management library together with Application Insights to run an A/B test across multiple LLM model configurations.
+
+The Node.js/TypeScript backend returns **mocked** chat replies that vary by model name, so you can run the whole sample without an Azure AI resource, credentials, or token spend. See `src/backend/chatService.ts` for how to swap in a real Azure AI Foundry deployment.
 
 ### Prerequisite
 
-- Azure AI Foundry with LLM model deployments
 - Azure Front Door endpoint configured with Azure App Configuration as its origin
 - Application Insights resource
 - Azure App Configuration with a variant feature flag named "OpenAI/newmodel" with the below configuration:
@@ -56,13 +57,6 @@ This sample is a full-stack chatbot application that uses Azure AI Foundry to ge
 
 ## Get Started
 
-- Configure `src/backend/.env` for AI Foundry connection
-
-```
-AI_FOUNDRY_ENDPOINT=<YOUR-AI_FOUNDRY_ENDPOINT>
-AI_FOUNDRY_API_VERSION=<YOUR-AI_FOUNDRY_API_VERSION>
-```
-
 - Configure `src/frontend/src/config.ts` for Azure Front Door and Application Insights connection
 
 ``` ts
@@ -81,3 +75,18 @@ export const config = {
     ```
 
 - Visit http://localhost:3000 in your browser.
+
+## Using a real model
+
+The chat backend is mocked on purpose. To connect a real Azure AI Foundry deployment:
+
+1. Install the SDKs: `cd src/backend && npm install @azure/identity @azure/ai-projects`
+2. Replace the mock in `src/backend/chatService.ts` with the Azure AI Foundry call shown in the comments there.
+3. Set the connection settings as environment variables before starting the server:
+
+    ```
+    AI_FOUNDRY_ENDPOINT=<YOUR-AI_FOUNDRY_ENDPOINT>
+    AI_FOUNDRY_API_VERSION=<YOUR-AI_FOUNDRY_API_VERSION>
+    ```
+
+Once a real model is wired up, `POST /api/chat` becomes a paid, credential-backed endpoint. Add authentication and rate limiting before exposing it beyond your local machine — the browser-only login in this sample is a UI demo for feature flag targeting, not a security control.

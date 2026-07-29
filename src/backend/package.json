@@ -6,10 +6,6 @@
     "start": "node dist/main.js"
   },
   "dependencies": {
-    "@azure/ai-agents": "1.1.0",
-    "@azure/ai-projects": "1.0.0",
-    "@azure/identity": "^4.13.0",
-    "dotenv": "^17.2.1",
     "express": "^4.22.1"
   },
   "devDependencies": {
